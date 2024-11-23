@@ -3,79 +3,78 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TP: Datos Personales - Fernanda Lobato</title>
+  <title>Dashboards Completos</title>
   <style>
     body {
       margin: 0;
       padding: 0;
+      height: 100vh; /* Altura completa de la ventana */
       display: flex;
       flex-direction: column;
-      height: 100vh; /* Altura de la ventana completa */
+      align-items: center;
+      justify-content: center;
     }
 
-    .dashboard {
-      flex: 1; /* Cada dashboard ocupa el mismo espacio */
+    .dashboard-container {
       position: relative;
-      overflow: hidden;
+      width: 100vw; /* Ancho completo de la ventana */
+      height: 100vh; /* Alto completo de la ventana */
     }
 
-    .dashboard iframe, .dashboard object {
-      position: absolute;
-      top: 0;
-      left: 0;
+    iframe, object {
       width: 100%;
       height: 100%;
       border: none;
     }
+
+    nav {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    }
+
+    nav button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background-color: #0056a4;
+    }
   </style>
 </head>
 <body>
-  <!-- Dashboard 1 -->
-  <div class="dashboard">
-    <div class='tableauPlaceholder' id='viz1732368713134'>
-      <object class='tableauViz'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-        <param name='embed_code_version' value='3' /> 
-        <param name='site_root' value='' />
-        <param name='name' value='TPDatospersonalesvdef/Dashboard' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-      </object>
-    </div>
+  <nav>
+    <button onclick="showDashboard(1)">Dashboard 1</button>
+    <button onclick="showDashboard(2)">Dashboard 2</button>
+    <button onclick="showDashboard(3)">Dashboard 3</button>
+  </nav>
+
+  <!-- Contenedor de los dashboards -->
+  <div class="dashboard-container" id="dashboard1">
+    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard"></object>
+  </div>
+  <div class="dashboard-container" id="dashboard2" style="display: none;">
+    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard1"></object>
+  </div>
+  <div class="dashboard-container" id="dashboard3" style="display: none;">
+    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard2"></object>
   </div>
 
-  <!-- Dashboard 2 -->
-  <div class="dashboard">
-    <div class='tableauPlaceholder' id='viz1732368748525'>
-      <object class='tableauViz'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-        <param name='embed_code_version' value='3' /> 
-        <param name='site_root' value='' />
-        <param name='name' value='TPDatospersonalesvdef/Dashboard1' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-      </object>
-    </div>
-  </div>
+  <script>
+    function showDashboard(number) {
+      // Esconde todos los dashboards
+      const dashboards = document.querySelectorAll('.dashboard-container');
+      dashboards.forEach(d => d.style.display = 'none');
 
-  <!-- Dashboard 3 -->
-  <div class="dashboard">
-    <div class='tableauPlaceholder' id='viz1732368772306'>
-      <object class='tableauViz'>
-        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-        <param name='embed_code_version' value='3' /> 
-        <param name='site_root' value='' />
-        <param name='name' value='TPDatospersonalesvdef/Dashboard2' />
-        <param name='tabs' value='no' />
-        <param name='toolbar' value='yes' />
-      </object>
-    </div>
-  </div>
-
-  <script type='text/javascript'>
-    const scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    document.body.appendChild(scriptElement);
+      // Muestra el dashboard correspondiente
+      document.getElementById(`dashboard${number}`).style.display = 'block';
+    }
   </script>
 </body>
 </html>
