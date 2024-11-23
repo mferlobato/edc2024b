@@ -1,80 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboards Completos</title>
+  <title>Visualizaciones Tableau - Fernanda Lobato</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh; /* Altura completa de la ventana */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .dashboard-container {
-      position: relative;
-      width: 100vw; /* Ancho completo de la ventana */
-      height: 100vh; /* Alto completo de la ventana */
+      width: 100vw; /* Ancho completo */
+      height: 100vh; /* Alto completo */
     }
 
-    iframe, object {
+    .dashboard-container iframe, .dashboard-container object {
       width: 100%;
       height: 100%;
       border: none;
     }
-
-    nav {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-    }
-
-    nav button {
-      margin: 5px;
-      padding: 10px 20px;
-      background-color: #0078d7;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    nav button:hover {
-      background-color: #0056a4;
-    }
   </style>
 </head>
 <body>
-  <nav>
-    <button onclick="showDashboard(1)">Dashboard 1</button>
-    <button onclick="showDashboard(2)">Dashboard 2</button>
-    <button onclick="showDashboard(3)">Dashboard 3</button>
-  </nav>
-
-  <!-- Contenedor de los dashboards -->
-  <div class="dashboard-container" id="dashboard1">
-    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard"></object>
-  </div>
-  <div class="dashboard-container" id="dashboard2" style="display: none;">
-    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard1"></object>
-  </div>
-  <div class="dashboard-container" id="dashboard3" style="display: none;">
-    <object class="tableauViz" data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard2"></object>
+  <!-- Dashboard 1 -->
+  <div class="dashboard-container">
+    <object class="tableauViz" 
+            data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard" 
+            style="display: block;"></object>
   </div>
 
-  <script>
-    function showDashboard(number) {
-      // Esconde todos los dashboards
-      const dashboards = document.querySelectorAll('.dashboard-container');
-      dashboards.forEach(d => d.style.display = 'none');
+  <!-- Dashboard 2 -->
+  <div class="dashboard-container">
+    <object class="tableauViz" 
+            data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard1" 
+            style="display: block;"></object>
+  </div>
 
-      // Muestra el dashboard correspondiente
-      document.getElementById(`dashboard${number}`).style.display = 'block';
-    }
-  </script>
+  <!-- Dashboard 3 -->
+  <div class="dashboard-container">
+    <object class="tableauViz" 
+            data-url="https://public.tableau.com/views/TPDatospersonalesvdef/Dashboard2" 
+            style="display: block;"></object>
+  </div>
+
+  <script type="text/javascript" src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
 </body>
 </html>
